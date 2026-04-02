@@ -13,6 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\UI">
+      <UniqueIdentifier>{e39846e8-bab0-4cdc-b75d-b9151d1e0df9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\States">
+      <UniqueIdentifier>{cbb2e543-db77-41e2-9831-2cbe6bc22b33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\States">
+      <UniqueIdentifier>{7afa0f2e-acf8-4401-b0eb-218e9a337b22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Commands">
+      <UniqueIdentifier>{3be46127-1c96-42a8-9ff4-e1ded260dc24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Commands">
+      <UniqueIdentifier>{fcdf336c-3efa-426e-8ee4-3ed7393826b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -30,12 +45,24 @@
     <ClCompile Include="Game.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectedState.cpp">
+      <Filter>源文件\States</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleState.cpp">
+      <Filter>源文件\States</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectedCommand.cpp">
+      <Filter>源文件\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="GameModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="State.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
@@ -44,14 +71,41 @@
     <ClInclude Include="Board.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Types.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>头文件\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>头文件\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>头文件\States</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleState.h">
+      <Filter>头文件\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectedState.h">
+      <Filter>头文件\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GameModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>头文件\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectedCommand.h">
+      <Filter>头文件\Commands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
