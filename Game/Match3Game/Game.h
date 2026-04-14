@@ -6,7 +6,12 @@
 #include "State.h"
 #include "IdleState.h"
 #include "SelectedState.h"
+#include "MatchingState.h"
+#include "SwappingState.h"
+#include "EliminatingState.h"
+#include "RefillingState.h"
 #include "ResourceManager.h"
+#include "FallingState.h"
 #include "Types.h"
 #include "GameModel.h"
 #include"Command.h"
@@ -14,7 +19,7 @@
 #include<stack>
 class Game {
 public:
-    enum class StateType { Idle, Select, Matching, Eliminating, Swapping };
+    enum class StateType { Idle, Select, Matching, Eliminating,Swapping,Falling, Refilling };
 public:
     Game(int rows, int cols, int colorCount, int cellSize, int offsetX, int offsetY);
     ~Game()=default;
@@ -43,6 +48,11 @@ private:
     State* current_state = nullptr;
     IdleState m_idle_state;
     SelectedState m_selected_state;
+    SwappingState m_swappingState;
+    MatchingState m_matching_state;
+    EliminatingState m_eliminating_state;
+    RefillingState m_refilling_state;
+    FallingState m_falling_state;
     bool m_running;
     bool m_buttonPressed;
 

@@ -15,10 +15,10 @@ void IdleState::on_input(Game&m_game,const ExMessage& msg)
            Cell*cell= m_game.getModel().getCell(clicked.x, clicked.y);
            Command* cmd = new SelectedCommand(cell);
            m_game.executeCommand(cmd);
+           std::cout << "选中命令入队!" << std::endl;
           
            m_game.chageState(Game::StateType::Select); // 需要 Game 提供 getSelectedState()
-           std::cout << "选中格子信息为：" << m_game.getModel().getSelectedCell()->getCol()
-               << m_game.getModel().getSelectedCell()->getRow() << std::endl;
+         
         }
     }
 }

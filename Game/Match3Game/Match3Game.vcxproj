@@ -21,31 +21,43 @@
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="EliminatingState.cpp" />
+    <ClCompile Include="FallingState.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameModel.cpp" />
     <ClCompile Include="IdleState.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MatchingState.cpp" />
+    <ClCompile Include="RefillingState.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="SelectedCommand.cpp" />
     <ClCompile Include="SelectedState.cpp" />
+    <ClCompile Include="SwapCommand.cpp" />
+    <ClCompile Include="SwappingState .cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="FallingState.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameModel.h" />
     <ClInclude Include="IdleState.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="MatchingState.h" />
+    <ClInclude Include="RefillingState.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SelectedCommand.h" />
     <ClInclude Include="SelectedState.h" />
     <ClInclude Include="State.h" />
+    <ClInclude Include="SwapCommand.h" />
     <ClInclude Include="Types.h" />
     <ClInclude Include="UIManager.h" />
+    <ClInclude Include="SwappingState.h" />
+    <ClInclude Include="EliminatingState.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

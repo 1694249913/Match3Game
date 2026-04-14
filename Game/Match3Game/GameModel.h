@@ -8,6 +8,7 @@ public :
 	GameModel(int rows, int cols, int colorCount);
 	//=================Ö»¶Á½Ó¿Ú====================
 	const Board& getBoard() const { return m_board; }
+	Board& getBoard2() { return m_board; }
 	Cell* getSelectedCell() const { return m_selectedCell; }
 	int getScore() const { return m_score; }
 	int getMoves() const { return m_moves; }

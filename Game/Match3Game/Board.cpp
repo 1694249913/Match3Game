@@ -63,3 +63,121 @@ void Board:: swap(const Cell& cell_a, const Cell& cell_b)
 {
 
 }
+// Board.cpp
+bool Board::hasMatch() const {
+    // 水平方向检测
+    for (int i = 0; i < m_rows; i++) {
+        int count = 1;
+        int lastType = getCellConst(i, 0)->getType();
+        for (int j = 1; j < m_cols; j++) {
+            int type = getCellConst(i, j)->getType();
+            if (type != 0 && type == lastType) {
+                count++;
+                if (count >= 3) return true;
+            }
+            else {
+                count = 1;
+                lastType = type;
+            }
+        }
+    }
+    // 垂直方向检测
+    for (int j = 0; j < m_cols; j++) {
+        int count = 1;
+        int lastType = getCellConst(0, j)->getType();
+        for (int i = 1; i < m_rows; i++) {
+            int type = getCellConst(i, j)->getType();
+            if (type != 0 && type == lastType) {
+                count++;
+                if (count >= 3) return true;
+            }
+            else {
+                count = 1;
+                lastType = type;
+            }
+        }
+    }
+    return false;
+}
+std::vector<Cell*>Board::getMatchPositions()
+{
+    std::vector<Cell*> matches;
+    std::vector<std::vector<bool>> marked(m_rows, std::vector<bool>(m_cols, false));
+
+    // 水平方向
+    for (int i = 0; i < m_rows; i++) {
+        int len = 1;
+        for (int j = 1; j <= m_cols; j++) {
+            if (j < m_cols && getCellConst(i, j)->getType() != 0 &&
+                getCellConst(i, j)->getType() == getCellConst(i, j - 1)->getType()) {
+                len++;
+            }
+            else {
+                if (len >= 3) {
+                    for (int k = j - len; k < j; k++) {
+                        if (!marked[i][k]) {
+                            marked[i][k] = true;
+                            matches.push_back(getCell(i, k)); // 非 const 版本
+                        }
+                    }
+                }
+                len = 1;
+            }
+        }
+    }
+
+    // 垂直方向
+    for (int j = 0; j < m_cols; j++) {
+        int len = 1;
+        for (int i = 1; i <= m_rows; i++) {
+            if (i < m_rows && getCellConst(i, j)->getType() != 0 &&
+                getCellConst(i, j)->getType() == getCellConst(i - 1, j)->getType()) {
+                len++;
+            }
+            else {
+                if (len >= 3) {
+                    for (int k = i - len; k < i; k++) {
+                        if (!marked[k][j]) {
+                            marked[k][j] = true;
+                            matches.push_back(getCell(k, j));
+                        }
+                    }
+                }
+                len = 1;
+            }
+        }
+    }
+    return matches;
+}
+void Board::applyGravity() {
+    for (int j = 0; j < m_cols; j++) {
+        // 从下往上收集非空格子
+        std::vector<int> columnTypes;
+        for (int i = m_rows - 1; i >= 0; i--) {
+            int type = getCellConst(i, j)->getType();
+            if (type != 0) {
+                columnTypes.push_back(type);
+            }
+        }
+        // 从下往上填充
+        for (int i = 0; i < m_rows; i++) {
+            if (i < columnTypes.size()) {
+                getCell(m_rows - 1 - i, j)->setType(columnTypes[i]);
+            }
+            else {
+                getCell(m_rows - 1 - i, j)->setType(0);
+            }
+        }
+    }
+}
+
+void Board::refill() {
+    for (int i = 0; i < m_rows; i++) {
+        for (int j = 0; j < m_cols; j++) {
+            if (getCellConst(i, j)->getType() == 0) {
+                int newType = rand() % m_colorCount + 1;
+                getCell(i, j)->setType(newType);
+            }
+        }
+    }
+}

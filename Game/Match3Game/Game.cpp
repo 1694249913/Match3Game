@@ -2,12 +2,18 @@
 #include "Game.h"
 #include"Cell.h"
 #include <conio.h>
+#include <iostream>
 Game::Game(int rows, int cols, int colorCount, int cellSize, int offsetX, int offsetY)
     : m_gameModel(rows, cols, colorCount)
     , m_renderer(cellSize, offsetX, offsetY, rows, cols)
     , m_running(true)
     , m_idle_state()        // ´«Èë this
     , m_selected_state()
+    , m_swappingState()
+    , m_matching_state()
+    , m_eliminating_state()
+    , m_refilling_state()
+    , m_falling_state()
     , current_state(&m_idle_state)
 {
     // ¼ÓÔØÍ¼Æ¬
@@ -64,18 +70,26 @@ void Game::chageState(StateType state)
     switch (state)
     {
     case StateType::Idle :
-        current_state =& m_selected_state;
+        current_state =&m_idle_state;
         break;
     case StateType::Select:
         current_state = &m_selected_state;
         break;
     case StateType::Matching:
-        current_state = &m_selected_state;
+        current_state = &m_matching_state;
         break;
     case StateType::Eliminating:
-        current_state = &m_selected_state;
+        current_state = &m_eliminating_state;
         break;
     case StateType::Swapping:
+        current_state = &m_swappingState;
+        break;
+    case StateType::Falling:
+        current_state = &m_falling_state;
+        break;
+    case StateType::Refilling:
+        current_state = &m_refilling_state;
+        break;
     default:
         break;
     }

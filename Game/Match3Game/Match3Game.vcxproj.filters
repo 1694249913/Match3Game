@@ -60,6 +60,24 @@
     <ClCompile Include="GameModel.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="SwapCommand.cpp">
+      <Filter>源文件\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchingState.cpp">
+      <Filter>源文件\States</Filter>
+    </ClCompile>
+    <ClCompile Include="SwappingState .cpp">
+      <Filter>源文件\States</Filter>
+    </ClCompile>
+    <ClCompile Include="EliminatingState.cpp">
+      <Filter>源文件\States</Filter>
+    </ClCompile>
+    <ClCompile Include="RefillingState.cpp">
+      <Filter>源文件\States</Filter>
+    </ClCompile>
+    <ClCompile Include="FallingState.cpp">
+      <Filter>源文件\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -106,6 +124,24 @@
     </ClInclude>
     <ClInclude Include="SelectedCommand.h">
       <Filter>头文件\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="SwapCommand.h">
+      <Filter>头文件\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchingState.h">
+      <Filter>头文件\States</Filter>
+    </ClInclude>
+    <ClInclude Include="SwappingState.h">
+      <Filter>头文件\States</Filter>
+    </ClInclude>
+    <ClInclude Include="EliminatingState.h">
+      <Filter>头文件\States</Filter>
+    </ClInclude>
+    <ClInclude Include="FallingState.h">
+      <Filter>头文件\States</Filter>
+    </ClInclude>
+    <ClInclude Include="RefillingState.h">
+      <Filter>头文件\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

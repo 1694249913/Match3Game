@@ -38,41 +38,48 @@ void Renderer::drawAll(const Board& board,  Cell* cell)
 
 void Renderer::drawBoard( const Board& board,  Cell* cell)
 {
+    int gap = 6;                     // 缝隙宽度（像素）
+    int drawSize = m_cellSize - gap; // 实际绘制尺寸
+    int radius = 25;  // 圆角大小
+
     for (int i = 0; i < board.getRows(); i++) {
         for (int j = 0; j < board.getCols(); j++) {
            
-            int x = m_offsetX + j * m_cellSize;
-            int y = m_offsetY + i * m_cellSize;
+            int x = m_offsetX + j * m_cellSize + gap / 2;
+            int y = m_offsetY + i * m_cellSize + gap / 2;
             int type = board.getCellConst(i, j)->getType();
 
-            int radius = 25;  // 圆角大小
-            setfillcolor(RGB(80, 120, 40));  // 深绿色 // 浅绿色色背景
-            roundrect(x, y, x + m_cellSize, y + m_cellSize, radius, radius);
-           
-            
             IMAGE* img = ResourceManager::getInstance().getImage(type);
             if (img) {
-                putimage_alpha(x, y, img);
-                if (cell&&cell==board.getCellConst(i, j))
-                {
-                    int y = m_offsetX + cell->getRow() * m_cellSize;
-                    int x = m_offsetY + cell->getCol() * m_cellSize;
-                    setfillcolor(RGB(100, 100, 100));
-                    solidrectangle(x, y, x + m_cellSize, y + m_cellSize);
-                }
-                   
-
+                putimage_alpha(x, y, drawSize, drawSize,img);
             }
             else {
                 // 如果没有图片，画灰色方块
                 setfillcolor(RGB(100, 100, 100));
-                solidrectangle(x, y, x + m_cellSize, y + m_cellSize);
+                solidrectangle(x, y, x + drawSize, y + drawSize);
             }
-
-            // 画边框
-           // setlinecolor(RGB(150, 150, 150));
-            //rectangle(x, y, x + m_cellSize, y + m_cellSize);
         }
+    }
+    // 第二遍：绘制选中格子的高亮（在所有格子之上，避免遮挡）
+    if (cell) {
+        int row = cell->getRow();
+        int col = cell->getCol();
+        int actualX = m_offsetX + col * m_cellSize + gap / 2;
+        int actualY = m_offsetY + row * m_cellSize + gap / 2;
+        int actualW = m_cellSize - gap;
+        int actualH = m_cellSize - gap;
+
+        // 外发光
+        setlinecolor(RGB(255, 255, 0));
+        setlinestyle(PS_SOLID, 3);
+        roundrect(actualX - 2, actualY - 2, actualX + actualW + 2, actualY + actualH + 2, radius, radius);
+
+        // 内边框
+        setlinecolor(RGB(255, 200, 0));
+        setlinestyle(PS_SOLID, 2);
+        roundrect(actualX, actualY, actualX + actualW, actualY + actualH, radius, radius);
+
+        setlinestyle(PS_SOLID, 1);
     }
 }
 

@@ -26,6 +26,7 @@ IMAGE* ResourceManager::getImage(int type) {
         // 第一次使用时初始化
         const_cast<ResourceManager*>(this)->setActiveImages();
     }
+    if (type == 0)return nullptr;
     auto it = m_images.find(activeImages[type-1]);
     if (it != m_images.end()) {
         return &(it->second);

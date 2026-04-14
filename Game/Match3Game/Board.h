@@ -15,6 +15,10 @@ public:
 	int getRows()const { return m_rows; }
 	int getCols()const { return m_cols; }
 	void swap(const Cell& cell_a, const Cell& cell_b);
+	bool hasMatch() const;
+	std::vector<Cell*> getMatchPositions();
+	void applyGravity();
+	void refill();
 
 private:
 	int m_rows, m_cols, m_colorCount;
